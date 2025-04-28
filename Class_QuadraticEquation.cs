@@ -205,19 +205,25 @@ namespace QuadraticEquation_Console
                 $"{A} * x^2 = {C * (-1)}\n" +
                 $"x^2={C}/{A}\n" +
                 $"x = ±√{C}/{A}");
-            var x1 = (Math.Pow(C / A, 2));
-            var x2 = (Math.Pow(C / A, 2)) * (-1);
+
+            var sqrtValue = Math.Sqrt(-C / (double)A);
+            var x1 = sqrtValue;
+            var x2 = -sqrtValue;
+
+
             Console.WriteLine($"Result x(1) = {x1}; x(2) = {x2}");
             Roots = $"x(1) = {x1}; x(2) = {x2}";
         }
         private void Type_3_Solving()//c=0
         {
-            Console.WriteLine((B > 0) ? $"{A}x^2 + {B}x = 0\n" : $"{A}x^2  {B}x = 0\n" +
-                $"x({A}x+{B}) = 0\n" +
-                $"x = 0; {A}x + b = 0\n" +
-                $"\t {A}x = {B * (-1)}\n");
+            string equation = (B > 0) ? $"{A}x^2 + {B}x = 0\n" : $"{A}x^2 {B}x = 0\n";
+            Console.WriteLine(equation +
+                $"x({A}x{(B > 0 ? "+" : "")}{B}) = 0\n" +
+                $"x = 0; {A}x + {B} = 0\n" +
+                $"\t {A}x = {-B}\n");
+
             var x1 = 0;
-            var x2 = (-1 * (B / A));
+            var x2 = -B / (double)A;
             Console.WriteLine($"Result x(1) = {x1}; x(2) = {x2}");
             Roots = $"x(1) = {x1}; x(2) = {x2}";
         }
